@@ -37,6 +37,15 @@ func shortVarFunc() {
 	fmt.Println(x, y, z, c, python, java)
 }
 
+func constFunc() {
+	const (
+		String  = "Const が使えFるのは Char,String,Boolean,Number"
+		Pi      = 3.14
+		Boolean = true
+	)
+
+	fmt.Println(Pi, String , Boolean)
+}
 func main() {
 	fmt.Println(add(42, 13))
 
@@ -51,4 +60,7 @@ func main() {
 	varFunc()
 	// alt shortVarFunc
 	shortVarFunc()
+
+	// Const
+	constFunc()
 }
