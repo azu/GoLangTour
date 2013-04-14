@@ -9,6 +9,7 @@ package main
 import (
 	"fmt"
 	"math"
+	"runtime"
 )
 
 func add(x , y int) int {
@@ -210,7 +211,17 @@ func closureFunc() {
 			neg(-2*i),
 		)
 	}
+}
 
+func switchFunc() {
+	switch os := runtime.GOOS; os{
+	case "darwin":
+		fmt.Println("OS X")
+	case "linux":
+		fmt.Println("Linux")
+	default:
+		fmt.Println("%s ", os)
+	}
 }
 func main() {
 	fmt.Println(add(42, 13))
@@ -252,6 +263,7 @@ func main() {
 	mapCheckState()
 	// closure
 	closureFunc()
-
+	// swith
+	switchFunc()
 }
 
