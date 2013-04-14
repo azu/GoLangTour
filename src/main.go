@@ -9,6 +9,7 @@ package main
 import (
 	"fmt"
 	"math"
+	"time"
 	"runtime"
 )
 
@@ -223,6 +224,17 @@ func switchFunc() {
 		fmt.Println("%s ", os)
 	}
 }
+func timeFunc(){
+	t := time.Now()
+	switch {
+	case t.Hour() < 12:
+		fmt.Println("Good Morning!")
+	case t.Hour()<17:
+		fmt.Println("Good AfterMoon")
+	default:
+		fmt.Println("Good evening")
+	}
+}
 func main() {
 	fmt.Println(add(42, 13))
 
@@ -263,7 +275,8 @@ func main() {
 	mapCheckState()
 	// closure
 	closureFunc()
-	// swith
+	// switch
 	switchFunc()
+	timeFunc()
 }
 
