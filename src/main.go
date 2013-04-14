@@ -150,8 +150,20 @@ func slice() {
 	// missing high index implies len(s)
 	fmt.Println("p[4:] ==", p[4:])
 
-
 	fmt.Println("p[4:] ==", p[0:len(p) - 1])
+
+	// nil slice
+	var z []int
+	fmt.Println(z, len(z), cap(z))
+	if z == nil {
+		fmt.Println("z is nil")
+	}
+
+}
+
+func printSlice(s string, x []int) {
+	fmt.Printf("%s len=%d cap=%d %v\n",
+		s, len(x), cap(x), x)
 }
 
 func main() {
