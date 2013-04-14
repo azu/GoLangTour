@@ -124,6 +124,34 @@ func do_vertex() {
 		s = Vertex{}      // X:0 and Y:0
 	)
 	fmt.Println(p, q, r, s)
+
+	// new
+	v := new(Vertex)
+	fmt.Println(v)
+	v.X, v.Y = 11, 9
+	fmt.Println(v)
+}
+
+func slice() {
+	p := []int{
+		1, 2, 3, 5, 7, 9,
+	}
+	fmt.Println("p ==", p)
+	for i := 0; i < len(p); i++ {
+		fmt.Printf("p[%d] == %d\n", i, p[i])
+	}
+
+	fmt.Println("p ==", p)
+	fmt.Println("p[1:4] ==", p[1:4])
+
+	// missing low index implies 0
+	fmt.Println("p[:3] ==", p[:3])
+
+	// missing high index implies len(s)
+	fmt.Println("p[4:] ==", p[4:])
+
+
+	fmt.Println("p[4:] ==", p[0:len(p) - 1])
 }
 
 func main() {
@@ -156,6 +184,10 @@ func main() {
 		pow(3, 3, 20),
 	)
 
+	// struct
 	do_vertex()
+
+	// slice
+	slice()
 }
 
