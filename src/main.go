@@ -82,6 +82,11 @@ func sqrt(x float64) string {
 	return fmt.Sprint(math.Sqrt(x))
 }
 
+func Sqrt(x float64) float64 {
+	z := 1.0
+	return z - (z*z - x)/(2*x)
+}
+
 func pow(x float64, n float64, limit float64) float64 {
 	// let ?
 	if v := math.Pow(x, n); v < limit {
@@ -93,8 +98,13 @@ func pow(x float64, n float64, limit float64) float64 {
 	// ~>
 	// doesn't access ``v`` value
 	return limit
-
 }
+
+type Vertex struct {
+	X  int
+	Y  int
+}
+
 func main() {
 	fmt.Println(add(42, 13))
 
@@ -125,5 +135,10 @@ func main() {
 		pow(3, 3, 20),
 	)
 
-
+	// Sqrt
+	fmt.Println(Sqrt(10))
+	// Struct
+	vertex := Vertex{1, 2}
+	vertex.X = 4
+	fmt.Println(vertex.X)
 }
