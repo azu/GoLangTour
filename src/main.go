@@ -105,6 +105,27 @@ type Vertex struct {
 	Y  int
 }
 
+func do_vertex() {
+	// Sqrt
+	fmt.Println(Sqrt(10))
+	// Struct
+	vertex := Vertex{1, 2}
+	vertex.X = 4
+	fmt.Println("vertex.X", vertex.X)
+	// pointer
+	vertex_p := &vertex
+	vertex_p.X = 1e9
+	fmt.Println("vertex.X", vertex.X)
+
+	var (
+		p = Vertex{1, 2}  // has type Vertex
+		q = &Vertex{1, 2} // has type *Vertex
+		r = Vertex{X: 1}  // Y:0 is implicit
+		s = Vertex{}      // X:0 and Y:0
+	)
+	fmt.Println(p, q, r, s)
+}
+
 func main() {
 	fmt.Println(add(42, 13))
 
@@ -135,10 +156,6 @@ func main() {
 		pow(3, 3, 20),
 	)
 
-	// Sqrt
-	fmt.Println(Sqrt(10))
-	// Struct
-	vertex := Vertex{1, 2}
-	vertex.X = 4
-	fmt.Println(vertex.X)
+	do_vertex()
 }
+
