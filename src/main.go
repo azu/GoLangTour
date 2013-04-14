@@ -8,6 +8,7 @@ package main
 
 import (
 	"fmt"
+	"math"
 )
 
 func add(x , y int) int {
@@ -68,10 +69,17 @@ func forFunc() {
 
 	// while loop
 	sum = 1
-	for sum < 1000{
+	for sum < 1000 {
 		sum += sum
 	}
 	fmt.Println(sum)
+}
+
+func sqrt(x float64) string {
+	if x < 0 {
+		return sqrt(-x) + "i"
+	}
+	return fmt.Sprint(math.Sqrt(x))
 }
 func main() {
 	fmt.Println(add(42, 13))
@@ -93,4 +101,7 @@ func main() {
 
 	// for
 	forFunc()
+
+	// sqrt
+	fmt.Println("sqrt: ", sqrt(2), sqrt(-4))
 }
