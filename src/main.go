@@ -172,7 +172,7 @@ func mapFunc() {
 	fmt.Println(m["key"])
 }
 
-func mapCheckState(){
+func mapCheckState() {
 	m := make(map[string]int)
 
 	m["Answer"] = 42
@@ -188,7 +188,30 @@ func mapCheckState(){
 	fmt.Println("The value:", v, "Present?", ok)
 }
 
+func adder() func (int)int {
+	sum := 0
+	return func(x int) int {
+		sum += x
+		return sum
+	}
+}
 
+func closureFunc() {
+	hypot := func(x , y float64) float64 {
+		return math.Sqrt(x*x + y*y)
+	}
+	fmt.Println(hypot(3, 4))
+
+	// adder
+	pos, neg := adder(), adder()
+	for i := 0; i < 10; i++ {
+		fmt.Println(
+			pos(i),
+			neg(-2*i),
+		)
+	}
+
+}
 func main() {
 	fmt.Println(add(42, 13))
 
@@ -227,5 +250,8 @@ func main() {
 	// map
 	mapFunc()
 	mapCheckState()
+	// closure
+	closureFunc()
+
 }
 
