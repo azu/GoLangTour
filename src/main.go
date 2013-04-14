@@ -103,8 +103,8 @@ func pow(x float64, n float64, limit float64) float64 {
 }
 
 type Vertex struct {
-	X  int
-	Y  int
+	X  float64
+	Y  float64
 }
 
 func do_vertex() {
@@ -224,16 +224,49 @@ func switchFunc() {
 		fmt.Println("%s ", os)
 	}
 }
-func timeFunc(){
+func timeFunc() {
 	t := time.Now()
 	switch {
 	case t.Hour() < 12:
 		fmt.Println("Good Morning!")
-	case t.Hour()<17:
+	case t.Hour() < 17:
 		fmt.Println("Good AfterMoon")
 	default:
 		fmt.Println("Good evening")
 	}
+}
+
+type MyFloat float64
+
+func (f MyFloat) Abs() float64 {
+	if f < 0 {
+		return float64(-1)
+	}
+	return float64(f)
+}
+
+func (v *Vertex) Scale(f float64) {
+	v.X = v.X*f
+	v.Y = v.Y*f
+}
+
+func (v *Vertex) Abs() float64 {
+	return math.Sqrt(v.X*v.X + v.Y*v.Y)
+}
+
+type Abser interface {
+	Abs() float64
+}
+
+func abserFunc() {
+	var abser Abser
+	f := MyFloat(-math.Sqrt2)
+
+	v := Vertex{3, 4}
+	abser = f
+	abser = &v
+	abser = f
+	fmt.Println(abser.Abs())
 }
 func main() {
 	fmt.Println(add(42, 13))
@@ -278,5 +311,14 @@ func main() {
 	// switch
 	switchFunc()
 	timeFunc()
+	// interface
+	f := MyFloat(-math.Sqrt2)
+	fmt.Println(f.Abs())
+
+	v_interface := &Vertex{3, 4}
+	v_interface.Scale(5)
+	fmt.Println(v_interface , v_interface.Abs())
+
+	abserFunc()
 }
 
